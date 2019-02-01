@@ -1,0 +1,43 @@
+apply plugin: 'java'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.compilerArgs += '-proc:none'
+}
+
+group = 'com.tw'
+version = '1.0.0'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.tw.conference.ConferenceApplication'
+    }
+    from {
+    	configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile('org.apache.logging.log4j:log4j-api:2.11.1')
+  	compile('org.apache.logging.log4j:log4j-core:2.11.1')
+    testCompile('junit:junit:4.+')
+}
+
+task propertiesFile  {
+	description 'Dynamically creates a properties file.'
+	doLast{
+	    def resourcesDir = 'src/main/resources'
+	    def env = 'dev'
+	    if (project.hasProperty("env")) {
+	    	env = project.property("env")
+		}
+		ant.copy(file:"${resourcesDir}/application-${env}.properties",tofile:"${resourcesDir}/application.properties")
+	}
+}
+
+processResources.dependsOn propertiesFile
