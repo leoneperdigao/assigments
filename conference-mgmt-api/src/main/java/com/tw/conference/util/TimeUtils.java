@@ -1,8 +1,8 @@
 package com.tw.conference.util;
 
-public final class Time {
+public final class TimeUtils {
 	
-    private Time() {}
+    private TimeUtils() {}
 
     /**
      * Takes the time in minutes and returns its string representation in AB:BC AM or AB:BC PM

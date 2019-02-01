@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 import com.tw.conference.domain.Conference;
-import com.tw.conference.util.File;
+import com.tw.conference.util.FileUtils;
 
 public class ConferenceTest {
 	
@@ -39,10 +39,10 @@ public class ConferenceTest {
     }
 
     private boolean genericTest(String inputFile) throws IOException {
-    	BufferedReader input = File.getBufferedReader(inputFile, this);
+    	BufferedReader input = FileUtils.getBufferedReader(inputFile, this);
     	Conference conference = new Conference(input);
 		
-    	BufferedReader output = File.getBufferedReader(getExpectedOutputFile(inputFile), this);
+    	BufferedReader output = FileUtils.getBufferedReader(getExpectedOutputFile(inputFile), this);
     	String expected = output.lines().collect(Collectors.joining(Configuration.BREAK_LINE));
     	expected += Configuration.BREAK_LINE;
     	

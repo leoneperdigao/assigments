@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.tw.conference.Configuration;
-import com.tw.conference.util.Time;
+import com.tw.conference.util.TimeUtils;
 
 /**
  * This class represents a session in the conference. 
@@ -91,7 +91,7 @@ public class Session implements Serializable {
     private int appendTalk(List<Talk> talks, int startTime, StringBuilder sb) {
         int nextTalkStartTime = startTime;
         for (Talk talk : talks) {
-            sb.append(Time.minutesToDisplayTime(nextTalkStartTime));
+            sb.append(TimeUtils.minutesToDisplayTime(nextTalkStartTime));
             sb.append(" ");
             sb.append(talk);
             sb.append(Configuration.BREAK_LINE);

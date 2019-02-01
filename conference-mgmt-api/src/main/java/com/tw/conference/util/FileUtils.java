@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  * @author leone
  *
  */
-public class File {
+public class FileUtils {
 	
 	/**
 	 * Routine to transform a input file into a bufferedReader based on context
