@@ -67,6 +67,10 @@ public class Session implements Serializable {
     }
 
     public boolean hasTimeAvailable(Talk talk) {
+        /*
+         * Trying evolving coding practice.
+         * return this.getRemainingDuration() >= talk.getDuration() || (this.getLastTalkSessionStartTime() < Configuration.getLunchSessionStartTime());
+         */
         return this.getRemainingDuration() >= talk.getDuration();
     }
     
