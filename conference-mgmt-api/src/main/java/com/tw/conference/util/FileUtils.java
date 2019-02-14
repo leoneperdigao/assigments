@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
  */
 public class FileUtils {
 	
+	private FileUtils(){}
+	
 	/**
 	 * Routine to transform a input file into a bufferedReader based on context
 	 * 
